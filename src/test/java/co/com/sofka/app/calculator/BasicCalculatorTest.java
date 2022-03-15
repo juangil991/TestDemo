@@ -37,4 +37,29 @@ class BasicCalculatorTest {
                 () -> first + " + " + second + " should equal " + expectedResult);
     }
 
+    @DisplayName("Testing several sums")
+    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @CsvSource({
+            "0,    1,   0",
+            "1,    2,   2",
+            "49,  51, 2499",
+            "1,  100, 100"
+    })
+    public void severalMult(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.mul(first, second),
+                () -> first + " + " + second + " should equal " + expectedResult);
+    }
+
+    @DisplayName("Testing several sums")
+    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @CsvSource({
+            "0,    1,   0",
+            "1,    2,   0.5",
+            "6,  2, 3",
+            "50,  100, 0.5"
+    })
+    public void severalDiv(Float first, Float second, Float expectedResult) {
+        assertEquals(expectedResult, basicCalculator.div(first, second),
+                () -> first + " + " + second + " should equal " + expectedResult);
+    }
 }
